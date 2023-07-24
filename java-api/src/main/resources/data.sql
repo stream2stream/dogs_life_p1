@@ -1,4 +1,5 @@
+INSERT INTO owners (owner_id, name) VALUES (1, 'Anca');
+INSERT INTO owners (owner_id, name) VALUES (2, 'Maria');
 
-CREATE TABLE IF NOT EXISTS owners (id int AUTO_INCREMENT PRIMARY KEY, name varChar(50))
-
-CREATE TABLE IF NOT EXISTS dogs (id int AUTO_INCREMENT PRIMARY KEY, name varChar(50), age int,  FOREIGN KEY (id) REFERENCES owners(id) );
+INSERT INTO dogs (dog_id, name, age, owner_id) VALUES (1, 'Yan', 3, 1);
+INSERT INTO dogs (dog_id, name, age, owner_id) VALUES (2, 'Dodo', 5, 2);
