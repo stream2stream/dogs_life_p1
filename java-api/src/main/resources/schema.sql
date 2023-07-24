@@ -11,6 +11,6 @@ dog_id INT AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(250) NOT NULL,
 age INT NOT NULL,
 owner_id INT NOT NULL,
-FOREIGN KEY (owner_id) REFERENCES owners(owners_id)
+FOREIGN KEY (owner_id) REFERENCES owners(owner_id)
 );
 
