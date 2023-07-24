@@ -1,6 +1,15 @@
-INSERT INTO owners (owner_id, name) VALUES (1, 'Selvyn');
-INSERT INTO owners (owner_id, name) VALUES (2, 'Martina');
+DROP TABLE IF EXISTS dogs;
+DROP TABLE IF EXISTS owners;
 
-INSERT INTO dogs (dog_id, name, age, owner_id) VALUES (1, 'Einstein', 3, 1);
-INSERT INTO dogs (dog_id, name, age, owner_id) VALUES (2, 'Kaya', 5, 2);
-INSERT INTO dogs (dog_id, name, age, owner_id) VALUES (3, 'Lassie', 7, 2);
+CREATE TABLE owners (
+    owner_id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE dogs (
+    dog_id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(250) NOT NULL,
+    age INT NOT NULL,
+    owner_id INT NOT NULL,
+    FOREIGN key (owner_id) REFERENCES owners (owner_id)
+);
