@@ -1,0 +1,4 @@
+
+CREATE TABLE IF NOT EXISTS owners (id int AUTO_INCREMENT PRIMARY KEY, name varChar(50))
+
+CREATE TABLE IF NOT EXISTS dogs (id int AUTO_INCREMENT PRIMARY KEY, name varChar(50), age int,  FOREIGN KEY (id) REFERENCES owners(id) );
