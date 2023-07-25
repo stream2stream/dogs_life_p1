@@ -1,7 +1,7 @@
 create table owners
 (
     owner_id int AUTO_INCREMENT PRIMARY KEY,
-    name int not null
+    name varchar (50) not null
 );
 
 create table dogs
