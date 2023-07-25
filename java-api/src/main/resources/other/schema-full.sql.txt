@@ -1,3 +1,5 @@
+CREATE DATABASE dogsAndOwners;
+
 DROP TABLE IF EXISTS owners;
 
 CREATE TABLE owners (
