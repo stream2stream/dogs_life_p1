@@ -15,5 +15,5 @@ values
     ('Bella', 10, 2),
     ('Lola', 15, 3),
     ('Poppy', 2, 4),
-    ('Coco', 5, 1),
+    ('Coco', 5, 1)
 ;
