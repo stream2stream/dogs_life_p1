@@ -4,6 +4,7 @@ import com.db.grad.javaapi.model.Dog;
 import com.db.grad.javaapi.repository.DogsRepository;
 import com.db.grad.javaapi.repository.DogsRepositoryStub;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,6 +19,7 @@ public class DogsHandlerTest {
     }
 
     @Test
+    @DisplayName("Test adding one dog")
     public void add_a_dog_return_number_of_dogs_in_repo_is_one() {
         // arrange
         DogHandler cut = new DogHandler(itsDogRepo);
@@ -25,12 +27,97 @@ public class DogsHandlerTest {
         theDog.setName("Bruno");
         cut.addDog(theDog);
         int expectedResult = 1;
-        
+
         // act
         long actualResult = cut.getNoOfDogs();
 
         // assert
         assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Test adding multiple dogs")
+    public void add_several_dogs_return_number_of_dogs_match_number_added(){
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+        Dog dog3 = new Dog();
+        dog3.setName("Bello");
+        cut.addDog(dog3);
+        int expectedResult = 3;
+
+        // act
+        long actualResult = cut.getNoOfDogs();
+
+        // assert
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("DogName: Only one dog with a name")
+    public void dog_name_only_one(){
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+        Dog expectedResult = dog2;
+
+        // act
+        Dog actualResult = cut.getDogByName("Rex");
+
+        // assert
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("DogName: No dog with the searched name")
+    public void dog_name_no(){
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+
+        // act
+        Dog actualResult = cut.getDogByName("Klaus");
+
+        // assert
+        assertEquals(null, actualResult);
+    }
+
+    @Test
+    @DisplayName("DogName: Multiple dogs with the searched name")
+    public void dog_name_multiple(){
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+        Dog dog3 = new Dog();
+        dog3.setName("Bruno");
+        cut.addDog(dog3);
+        Dog expectedResult = null;
+
+        // act
+        Dog actualResult = cut.getDogByName("Bruno");
+
+        // assert
+        assertEquals(null, actualResult);
     }
 
 
