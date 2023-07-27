@@ -38,4 +38,26 @@ public class DogsHandlerTest {
         assertEquals( expectedResult, actualResult );
     }
 
+    @Test
+    public void addSeveralDogsReturnNumberOfDogsMatchNumberAdded(){
+        DogHandler dogHandler = new DogHandler(itsDogRepo);
+
+        Dog dog1 = new Dog();
+        dog1.setName("Max");
+        dogHandler.addDog( dog1 );
+
+        Dog dog2 = new Dog();
+        dog2.setName("John");
+        dogHandler.addDog( dog2 );
+
+        Dog dog3 = new Dog();
+        dog3.setName("Wick");
+        dogHandler.addDog( dog3 );
+
+        assertEquals(3, dogHandler.getNoOfDogs(), "Number of dogs does not match the number added");
+
+
+
+    }
+
 }
