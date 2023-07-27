@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.service;
 
+import com.db.grad.javaapi.exceptions.DogNotFoundException;
 import com.db.grad.javaapi.model.Dog;
 import com.db.grad.javaapi.repository.DogsRepository;
 import com.db.grad.javaapi.repository.DogsRepositoryStub;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DogHandlerTest {
 
@@ -66,5 +68,17 @@ public class DogHandlerTest {
         long actualId = cut.updateDogDetails(theDog);
 
         assertEquals(expectedId, actualId);
+    }
+
+    @Test
+    public void update_dog_that_not_exists_throws() {
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog theDog = new Dog();
+        theDog.setName("Bruno");
+        cut.addDog(theDog);
+        Dog theSecondDog = new Dog();
+        theSecondDog.setName("NotBruno");
+
+        assertThrows(DogNotFoundException.class, () -> cut.updateDogDetails(theSecondDog));
     }
 }
