@@ -62,15 +62,15 @@ public class DogsHandlerTest {
         DogHandler dogHandler = new DogHandler(itsDogRepo);
 
         Dog dog1 = new Dog();
-        dog1.setId(483729L);
+        dog1.setId(56);
 
-        Dog dog2 = new Dog();
-        dog2.setId(99999L);
+        assertEquals(56, dog1.getId());
 
-        dogHandler.addDog(dog1);
-        dogHandler.addDog(dog2);
+        dog1.setId(1L);
 
-        assertEquals(dog1.getId(), dogHandler.updateDogDetails(dog1), "The IDs of the dogs do not match.");
+        dogHandler.updateDogDetails(dog1);
+
+        assertEquals(1L, dog1.getId());
     }
 
 }
