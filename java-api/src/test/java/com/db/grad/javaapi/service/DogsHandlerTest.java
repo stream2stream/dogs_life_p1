@@ -39,6 +39,7 @@ public class DogsHandlerTest {
     }
 
     @Test
+
     public void testGetDogById() {
         DogHandler cut = new DogHandler(itsDogRepo);
         Dog theDog = new Dog();
@@ -54,6 +55,59 @@ public class DogsHandlerTest {
         Dog expectedResult = theDog;
         Dog actualResult = cut.findById(1L);
         assertEquals( expectedResult, actualResult, "Sorry, could not find the dog" );
+
+    public void addSeveralDogsReturnNumberOfDogsMatchNumberAdded(){
+        DogHandler dogHandler = new DogHandler(itsDogRepo);
+
+        Dog dog1 = new Dog();
+        dog1.setName("Max");
+        dogHandler.addDog( dog1 );
+
+        Dog dog2 = new Dog();
+        dog2.setName("John");
+        dogHandler.addDog( dog2 );
+
+        Dog dog3 = new Dog();
+        dog3.setName("Wick");
+        dogHandler.addDog( dog3 );
+
+        assertEquals(3, dogHandler.getNoOfDogs(), "Number of dogs does not match the number added");
+    }
+
+    @Test
+    public void checkIfDogIDIsUpdated(){
+        DogHandler dogHandler = new DogHandler(itsDogRepo);
+
+        Dog dog1 = new Dog();
+        dog1.setId(56);
+
+        assertEquals(56, dog1.getId());
+
+        dog1.setId(1L);
+
+        dogHandler.updateDogDetails(dog1);
+
+        assertEquals(1L, dog1.getId());
+    }
+
+    @Test
+    public void addAndRemoveDog(){
+        DogHandler dogHandler = new DogHandler(itsDogRepo);
+
+        Dog dog1 = new Dog();
+        dog1.setName("Max");
+        dogHandler.addDog( dog1 );
+
+        Dog dog2 = new Dog();
+        dog2.setName("Max2");
+        dogHandler.addDog( dog2 );
+
+        Dog dog3 = new Dog();
+        dog3.setName("Max3");
+        dogHandler.addDog( dog3 );
+
+        dogHandler.removeDog(1);
+        assertEquals(2, dogHandler.getNoOfDogs());
 
     }
 
