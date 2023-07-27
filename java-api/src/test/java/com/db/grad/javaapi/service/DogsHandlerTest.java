@@ -40,7 +40,9 @@ public class DogsHandlerTest {
         Dog dog2 = new Dog();
         handler.addDog(dog2);
 
-        Dog ret = handler.getDogById(1);
+        dog1 = handler.getDogById(dog1.getId());
+        dog2 = handler.getDogById(dog2.getId());
+
         assertEquals(dog1.getId(), 1);
         assertEquals(dog2.getId(), 2);
     }
