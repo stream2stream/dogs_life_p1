@@ -1,4 +1,23 @@
-HELP.md
+        long uniqueId = cut.addDog( theDog );
+
+                long expectedResult = 0;
+                        boolean expectedStatus = true;
+
+
+                                // act
+                                        boolean actualStatus = cut.removeDog( uniqueId);
+                                                long actualResult = cut.getNoOfDogs();
+
+                                                        // assert
+                                                                assertEquals( expectedStatus, actualStatus);
+                                                                        assertEquals( expectedResult, actualResult );
+                                                                            }
+
+                                                                                // This testber_of_dogs_is_one()
+                                                                                    {
+                                                                                            // arrange
+                                                                                                    DogHandler cut = new DogHandler( itsDogRepo );
+                                                                                                            Dog theDog = new Dog();HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
