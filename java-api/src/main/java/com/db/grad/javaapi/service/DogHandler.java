@@ -6,6 +6,7 @@ import com.db.grad.javaapi.repository.DogsRepository;
 public class DogHandler {
 
     private DogsRepository itsDogRepo;
+
     public DogHandler(DogsRepository repo) {
         itsDogRepo = repo;
     }
@@ -16,5 +17,9 @@ public class DogHandler {
 
     public long getNoOfDogs() {
         return itsDogRepo.count();
+    }
+
+    public long updateDogDetails(Dog theDog) {
+            return itsDogRepo.save(theDog);
     }
 }
