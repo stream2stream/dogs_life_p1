@@ -31,6 +31,16 @@ public class DogsHandlerTest {
 
     }
 
+    @Test
+    public void joes_test() {
+        //intuitive, I know
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog theDog = new Dog();
+        theDog.setName("Bruno");
+        cut.addDog(theDog);
+        assertEquals(theDog, cut.getDogByName("Bruno"));
+    }
+
 }
 
 
