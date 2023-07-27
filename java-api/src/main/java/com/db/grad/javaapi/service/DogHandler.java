@@ -42,4 +42,8 @@ public class DogHandler {
     public Dog getDogById(int i) {
         return itsDogsRepo.findById(i);
     }
+
+    public long updateDogDetails(Dog dog) {
+        return dog.getId();
+    }
 }

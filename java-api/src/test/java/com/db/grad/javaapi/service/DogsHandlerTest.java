@@ -159,12 +159,8 @@ public class DogsHandlerTest {
         dog3.setName("Bruno");
         cut.addDog(dog3);
 
-        dog1.setId(1241241);
-        dog2.setId(555555);
-        dog3.setId(9876543);
-
         // act
-        Dog actualResult = cut.getDogById(555555);
+        Dog actualResult = cut.getDogById(2);
 
         // assert
         assertEquals(dog2, actualResult);
@@ -185,15 +181,34 @@ public class DogsHandlerTest {
         dog3.setName("Bruno");
         cut.addDog(dog3);
 
-        dog1.setId(1241241);
-        dog2.setId(555555);
-        dog3.setId(9876543);
-
         // act
-        Dog actualResult = cut.getDogById(5553331);
+        Dog actualResult = cut.getDogById(4);
 
         // assert
         assertNull(actualResult);
+    }
+
+    @Test
+    @DisplayName("Update Dogs ID")
+    void update_dogs_id() {
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+        Dog dog3 = new Dog();
+        dog3.setName("Bruno");
+        cut.addDog(dog3);
+
+        // act
+        dog3.setId(9826878);
+        long actualResult = cut.updateDogDetails(dog3);
+
+        // assert
+        assertEquals(9826878, actualResult);
     }
 
 
