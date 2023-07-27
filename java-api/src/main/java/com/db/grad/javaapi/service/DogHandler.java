@@ -20,8 +20,12 @@ public class DogHandler {
         return dogsRepository.count();
     }
 
+
+    public Dog getDogById(long id) {return dogsRepository.findById(id);}
+
     public Dog getDogByName(String name) { return dogsRepository.getDogByName(name); }
 
+<<<<<<< HEAD
      public long updateDogDetails(Dog dog) {
         if (dogsRepository.existsById(dog.getId())) {
             return dogsRepository.save(dog);
@@ -29,6 +33,10 @@ public class DogHandler {
             return -1;
         }
     }
+=======
+
+
+>>>>>>> bf1831ca2400f97018c403c82d09c9494127cb3e
 }
 
 
