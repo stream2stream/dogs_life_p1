@@ -29,12 +29,9 @@ public class DogHandler {
         // get all dogs with name
         List<Dog> resultList = itsDogsRepo.findByName(dummyDog);
 
-        if(resultList.isEmpty()) {
-            return null;
-        } else if(resultList.size() == 1) {
+        if(resultList.size() == 1) {
             return resultList.get(0);
         } else {
-            // more dogs with same name
             return null;
         }
     }
