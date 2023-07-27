@@ -64,9 +64,9 @@ public class DogHandlerTest {
         //act
         Dog theDog = new Dog();
         theDog.setName("Bruno");
-        cut.addDog(theDog);
+        Long idOfTheDog = cut.addDog(theDog);
 
-        boolean actualResult = cut.removeDog(cut.getDogByName(theDog).get(0).getId());
+        boolean actualResult = cut.removeDog(idOfTheDog);
 
         boolean expectedResult = true;
 

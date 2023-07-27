@@ -24,7 +24,4 @@ public class DogHandler {
         return itsDogRepo.delete(itsDogRepo.findById(id));
     }
 
-    public List<Dog> getDogByName(Dog dogToFind){
-        return itsDogRepo.findByName(dogToFind);
-    }
 }
