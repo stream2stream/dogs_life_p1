@@ -24,17 +24,45 @@ public class DogsHandlerTest {
         cut.addDog(theDog);
 
         int expectedResult = 1;
-
         //act
         long actualResult = cut.getNoOfDogs();
-
-
         //assert
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
     public void add_several_dogs_return_number_of_dogs_match_number_added(){
+        //arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        Dog dog2 = new Dog();
+        cut.addDog(dog1);
+        cut.addDog(dog2);
 
+        int expectedResult = 2;
+        //act
+        long actualResult = cut.getNoOfDogs();
+        //assert
+        assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void get_a_dogs_name_which_match_the_name(){
+        //arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Money");
+        Dog dog2 = new Dog();
+        dog2.setName("Coin");
+        cut.addDog(dog1);
+        cut.addDog(dog2);
+
+        String expectedResult = "Money";
+        //act
+        String actualResult = cut;
+        //assert
+        assertEquals(expectedResult, actualResult);
+    }
+
+
 }
