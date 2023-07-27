@@ -8,10 +8,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class DogsHandlerTest {
 
-    private DogsRepository itsDogRepo = new DogsRepositoryStub();
+    private final DogsRepository itsDogRepo = new DogsRepositoryStub();
 
     @BeforeEach
     public void makeSureRepoIsEmpty() {
@@ -69,13 +70,12 @@ public class DogsHandlerTest {
         Dog dog2 = new Dog();
         dog2.setName("Rex");
         cut.addDog(dog2);
-        Dog expectedResult = dog2;
 
         // act
         Dog actualResult = cut.getDogByName("Rex");
 
         // assert
-        assertEquals(expectedResult, actualResult);
+        assertEquals(dog2, actualResult);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class DogsHandlerTest {
         Dog actualResult = cut.getDogByName("Klaus");
 
         // assert
-        assertEquals(null, actualResult);
+        assertNull(actualResult);
     }
 
     @Test
@@ -111,13 +111,89 @@ public class DogsHandlerTest {
         Dog dog3 = new Dog();
         dog3.setName("Bruno");
         cut.addDog(dog3);
-        Dog expectedResult = null;
 
         // act
         Dog actualResult = cut.getDogByName("Bruno");
 
         // assert
-        assertEquals(null, actualResult);
+        assertNull(actualResult);
+    }
+
+    @Test
+    @DisplayName("DogId not exists")
+    void dog_id_not_exist() {
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        dog1.setId(1241241);
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        dog2.setId(555555);
+        cut.addDog(dog2);
+        Dog dog3 = new Dog();
+        dog3.setName("Bruno");
+        dog3.setId(9876543);
+        cut.addDog(dog3);
+
+        // act
+        Dog actualResult = cut.getDogById(232463429);
+
+        // assert
+        assertNull(actualResult);
+    }
+
+    @Test
+    @DisplayName("DogId exists")
+    void dog_id_exists() {
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+        Dog dog3 = new Dog();
+        dog3.setName("Bruno");
+        cut.addDog(dog3);
+
+        dog1.setId(1241241);
+        dog2.setId(555555);
+        dog3.setId(9876543);
+
+        // act
+        Dog actualResult = cut.getDogById(555555);
+
+        // assert
+        assertEquals(dog2, actualResult);
+    }
+
+    @Test
+    @DisplayName("DogId exists")
+    void dog_id_not_exists() {
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+        Dog dog3 = new Dog();
+        dog3.setName("Bruno");
+        cut.addDog(dog3);
+
+        dog1.setId(1241241);
+        dog2.setId(555555);
+        dog3.setId(9876543);
+
+        // act
+        Dog actualResult = cut.getDogById(5553331);
+
+        // assert
+        assertNull(actualResult);
     }
 
 

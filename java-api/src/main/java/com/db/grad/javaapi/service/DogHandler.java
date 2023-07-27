@@ -38,4 +38,8 @@ public class DogHandler {
             return null;
         }
     }
+
+    public Dog getDogById(int i) {
+        return itsDogsRepo.findById(i);
+    }
 }
