@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS dogs;
+
 CREATE TABLE Owners(
     id INT PRIMARY KEY,
     name VARCHAR(255)
