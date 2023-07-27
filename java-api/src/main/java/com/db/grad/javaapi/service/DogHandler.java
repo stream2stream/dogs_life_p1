@@ -21,7 +21,9 @@ public class DogHandler {
     }
 
     public boolean removeDog(long id){
-        return itsDogRepo.delete(itsDogRepo.findById(id));
+        if(itsDogRepo.findById(id) != null){
+            return itsDogRepo.delete(itsDogRepo.findById(id));
+        }
+       return false;
     }
-
 }

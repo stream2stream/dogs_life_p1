@@ -73,7 +73,25 @@ public class DogHandlerTest {
         //assert
 
         assertEquals(expectedResult,actualResult);
+    }
 
+    @Test
+    public void remove_dog_that_is_not_in_db_return_false(){
+
+        //arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+
+        //act
+        Dog theDog = new Dog();
+        theDog.setName("Bruno");
+        Long idOfTheDog = cut.addDog(theDog);
+
+        long noOfDogs = cut.getNoOfDogs();
+        boolean actualResult = cut.removeDog(noOfDogs+1);
+        boolean expectedResult = false;
+
+        assertEquals(actualResult,expectedResult);
+        
     }
 
 }
