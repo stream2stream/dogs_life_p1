@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.service;
 
+import com.db.grad.javaapi.exceptions.DogNotFoundException;
 import com.db.grad.javaapi.model.Dog;
 import com.db.grad.javaapi.repository.DogsRepository;
 
@@ -20,6 +21,10 @@ public class DogHandler {
     }
 
     public long updateDogDetails(Dog theDog) {
+        if (itsDogRepo.findById(theDog.getId()) != null) {
             return itsDogRepo.save(theDog);
+        } else {
+            throw new DogNotFoundException();
+        }
     }
 }
