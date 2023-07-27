@@ -30,4 +30,23 @@ public class DogsHandlerTest {
     }
 
 
+
+
+    @Test
+    @DisplayName("Check if Name of Dog Exists")
+    public void getDogByName(){
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog theDog = new Dog();
+        String name = "Bruno";
+        theDog.setName(name);
+        theDog.setId(1);
+        cut.addDog( theDog );
+
+        Dog dog=cut.getDogByName("Bruno");
+        assertEquals(theDog,dog);
+
+
+    }
+
+
 }
