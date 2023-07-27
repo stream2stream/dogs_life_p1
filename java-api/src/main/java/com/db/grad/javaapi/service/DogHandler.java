@@ -19,4 +19,6 @@ public class DogHandler {
     public long getNoOfDogs(){
         return dogsRepository.count();
     }
+
+    public Dog getDogById(long id) {return dogsRepository.findById(id);}
 }

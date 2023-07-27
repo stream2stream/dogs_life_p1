@@ -6,7 +6,11 @@ import com.db.grad.javaapi.repository.DogsRepositoryStub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import javax.validation.constraints.NotNull;
+
+import java.util.function.BooleanSupplier;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DogsHandlerTest {
     private DogsRepository dogRepo = new DogsRepositoryStub();
@@ -43,4 +47,33 @@ public class DogsHandlerTest {
         int expectedResult = 1;
         assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void check_if_existing_dog_returns_not_null(){
+        DogHandler dogHandler = new DogHandler(dogRepo);
+        Dog theDog = new Dog();
+        theDog.setId(1);
+        theDog.setName("Bruno");
+        dogHandler.addDog( theDog );
+
+        Dog actualResult = dogHandler.getDogById(1);
+        assertNotNull(actualResult);
+
+    }
+
+    @Test
+    public void check_if_not_existing_dog_returns_null(){
+        DogHandler dogHandler = new DogHandler(dogRepo);
+        Dog theDog = new Dog();
+        theDog.setId(1);
+        theDog.setName("Bruno");
+        dogHandler.addDog( theDog );
+
+        Dog actualResult = dogHandler.getDogById(2);
+        assertNull(actualResult);
+
+    }
+
+
+
 }
