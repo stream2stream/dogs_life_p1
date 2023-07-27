@@ -120,7 +120,36 @@ public class DogsHandlerTest {
         Dog result = dogHandler.getDogByName("Max");
         Assertions.assertEquals(theDog2, result, "Should return the single Dog object with the unique name");
     }
+      @Test
+        public void updateDogDetails_ShouldReturnUpdatedDogIdIfExists() {
+          DogHandler dogHandler = new DogHandler(dogRepo);
+          Dog theDog = new Dog();
+          theDog.setId(1);
+          theDog.setName("Buddy");
+          dogHandler.addDog(theDog);
+
+          theDog.setName("Max");
+          long updatedDogId = dogHandler.updateDogDetails(theDog);
+
+          Assertions.assertEquals(1, updatedDogId, "Should return the updated Dog's ID");
+          Dog updatedDog = dogHandler.getDogByName("Max");
+
+          Assertions.assertEquals("Max", updatedDog.getName(), "Should update the dog's name");
+      }
+         @Test
+         public void updateDogDetails_ShouldReturnNegativeValueIfDogDoesNotExist() {
+             DogHandler dogHandler = new DogHandler(dogRepo);
+
+             Dog theDog = new Dog();
+             theDog.setId(1);
+             theDog.setName("Buddy");
+
+             long updatedDogId = dogHandler.updateDogDetails(theDog);
+
+             Assertions.assertTrue(updatedDogId < 0, "Should return a negative value if the dog does not exist");
+         }
 }
+
 
 
 
