@@ -96,4 +96,24 @@ public class DogsRepositoryStub implements DogsRepository {
         itsDogs.clear();
     }
 
+    @Override
+    public Dog getDogByName(String name) {
+        Dog result = null;
+
+        for (Dog theDog : itsDogs) {
+            if (theDog.getName().equalsIgnoreCase(name)) {
+                if (result != null) {
+                    // If we already found one dog with the given name,
+                    // it means there are multiple dogs with the same name, so return null.
+                    return null;
+                }
+                result = theDog;
+            }
+        }
+
+
+        return result;
+
+    }
+
 }

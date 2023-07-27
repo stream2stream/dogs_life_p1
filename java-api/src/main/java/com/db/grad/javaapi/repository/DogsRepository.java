@@ -13,5 +13,6 @@ public interface DogsRepository {
     boolean existsById( long id );
 
     // Additional admin functionality
-    void    deleteAll();
+    void deleteAll();
+    Dog getDogByName(String name);
 }

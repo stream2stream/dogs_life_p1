@@ -20,5 +20,11 @@ public class DogHandler {
         return dogsRepository.count();
     }
 
+
     public Dog getDogById(long id) {return dogsRepository.findById(id);}
+
+    public Dog getDogByName(String name) { return dogsRepository.getDogByName(name); }
+
+
+
 }
