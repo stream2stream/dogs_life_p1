@@ -39,23 +39,23 @@ public class DogsHandlerTest {
     }
 
     @Test
-
     public void testGetDogById() {
         DogHandler cut = new DogHandler(itsDogRepo);
         Dog theDog = new Dog();
         theDog.setName("Bruno");
-        theDog.setId(1L);
-        cut.addDog( theDog );
+        theDog.setId(3);
+        cut.addDog(theDog);
         // Dog 2 to fail the test
         Dog theDog2 = new Dog();
         theDog2.setName("Dog2");
         theDog2.setId(2L);
-        cut.addDog( theDog2 );
+        cut.addDog(theDog2);
 
         Dog expectedResult = theDog;
-        Dog actualResult = cut.findById(1L);
-        assertEquals( expectedResult, actualResult, "Sorry, could not find the dog" );
-
+        Dog actualResult = cut.findById(3);
+        assertEquals(expectedResult, actualResult, "Sorry, could not find the dog");
+    }
+    @Test
     public void addSeveralDogsReturnNumberOfDogsMatchNumberAdded(){
         DogHandler dogHandler = new DogHandler(itsDogRepo);
 
@@ -110,6 +110,8 @@ public class DogsHandlerTest {
         assertEquals(2, dogHandler.getNoOfDogs());
 
     }
+
+
 
 
 }
