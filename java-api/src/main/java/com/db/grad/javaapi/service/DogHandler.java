@@ -16,4 +16,8 @@ public class DogHandler {
     {
         return itsDogsRepo.count();
     }
+
+    public boolean existsById(long id) {
+        return itsDogsRepo.existsById(id);
+    }
 }

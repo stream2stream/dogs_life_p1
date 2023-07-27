@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DogsHandler {
+public class DogsHandlerTest {
 
     private DogsRepository itsDogRepo = new DogsRepositoryStub();
     @BeforeEach
@@ -26,6 +26,19 @@ public class DogsHandler {
 
         long actualResult = cut.getNoOfDogs();
         int expectedResult = 1;
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void existsById()
+    {
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog theDog = new Dog();
+        theDog.setId(2);
+        cut.addDog( theDog );
+
+        boolean actualResult = cut.existsById(2);
+        boolean expectedResult = true ;
         assertEquals(expectedResult, actualResult);
     }
 }
