@@ -1,3 +1,6 @@
-INSERT INTO dogs (dog_id, name, age) VALUES (1, 'Einstein', 3);
-INSERT INTO dogs (dog_id, name, age) VALUES (2, 'Kaya', 5);
-INSERT INTO dogs (dog_id, name, age) VALUES (3, 'Lassie', 7);
+INSERT INTO Owners (id, name) VALUES (1, 'Alex');
+INSERT INTO Owners (id, name) VALUES (2, 'Haida');
+
+INSERT INTO Dogs (id, name, age, owner_id) VALUES (1, 'fluffy', 2, 1);
+INSERT INTO Dogs (id, name, age, owner_id) VALUES (2, 'sparrow', 1, 1);
+INSERT INTO Dogs (id, name, age, owner_id) VALUES (3, 'bingo', 4, 2);
