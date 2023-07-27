@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class DogsHandlerTest {
     private DogsRepository itsDogRepo = new DogsRepositoryStub();
@@ -28,4 +29,23 @@ public class DogsHandlerTest {
 
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void find_dog_by_valid_id_returns_null_dog() {
+    DogsHandler cut = new DogsHandler(itsDogRepo);
+    Dog theDog = new Dog();
+    theDog.setName("Bruno");
+    cut.addDog(theDog);
+    theDog = new Dog();
+    theDog.setName("Frank");
+    long uniqueId = cut.addDog( theDog);
+    Dog expectedDog = theDog;
+    theDog = new Dog();
+    theDog.setName("Penny");
+    cut.addDog(theDog);
+
+    Dog actualResult = cut.getDogById(33);
+
+    assertNull( actualResult );
+}
 }

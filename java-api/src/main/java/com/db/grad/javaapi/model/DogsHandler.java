@@ -23,4 +23,10 @@ public class DogsHandler {
     public long getNoOfDogs() {
         return itsDog.count();
     }
+
+    public Dog getDogById(long uniqueId){
+        return itsDog.findById(uniqueId);
+    }
+
 }
+
