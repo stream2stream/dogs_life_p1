@@ -47,4 +47,7 @@ public class DogHandler {
 
     
 
+    public Dog getDogById( long id ) {
+        return itsDogRepo.findById(id);
+    }
 }
