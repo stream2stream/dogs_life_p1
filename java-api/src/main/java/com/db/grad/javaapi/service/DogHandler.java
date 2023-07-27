@@ -22,5 +22,13 @@ public class DogHandler {
 
     public Dog getDogByName(String name) { return dogsRepository.getDogByName(name); }
 
-
+     public long updateDogDetails(Dog dog) {
+        if (dogsRepository.existsById(dog.getId())) {
+            return dogsRepository.save(dog);
+        } else {
+            return -1;
+        }
+    }
 }
+
+
