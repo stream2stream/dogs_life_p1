@@ -51,4 +51,39 @@ public class DogsHandlerTest {
         //assert
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void return_dog_by_name(){
+        //arange
+        DogsHandler cut = new DogsHandler(itsDogRepo);
+        Dog theDog = new Dog("Bruno");
+
+        cut.addDog(theDog);
+
+        Dog expectedResult = theDog;
+
+        //act
+        Dog actualResult = cut.getDogByName("Bruno");
+
+        //assert
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void return_dog_by_id(){
+        //arange
+        DogsHandler cut = new DogsHandler(itsDogRepo);
+        Dog theDog = new Dog();
+        theDog.setId(1L);
+
+        cut.addDog(theDog);
+
+        Dog expectedResult = theDog;
+
+        //act
+        Dog actualResult = cut.getDogByID(1L);
+
+        //assert
+        assertEquals(expectedResult, actualResult);
+    }
 }
