@@ -62,11 +62,11 @@ public class DogsHandlerTest {
     @Test
     public void getDogByName(){
         DogHandler dogHandler = new DogHandler(itsDogRepo);
-
+        //dog1
         Dog dog1 = new Dog();
         dog1.setName("Max");
         dogHandler.addDog(dog1);
-
+        //dog2
         Dog dog2 = new Dog();
         dog2.setName("John");
         dogHandler.addDog(dog2);

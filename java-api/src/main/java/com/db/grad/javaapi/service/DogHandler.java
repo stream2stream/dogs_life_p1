@@ -31,6 +31,6 @@ public class DogHandler {
 
             }
         }
-        return foundDog;
+        return foundDog; //return the dog object
     }
 }
