@@ -55,9 +55,22 @@ public class DogsHandlerTest {
         dogHandler.addDog( dog3 );
 
         assertEquals(3, dogHandler.getNoOfDogs(), "Number of dogs does not match the number added");
+    }
 
+    @Test
+    public void checkIfDogIDIsUpdated(){
+        DogHandler dogHandler = new DogHandler(itsDogRepo);
 
+        Dog dog1 = new Dog();
+        dog1.setId(483729L);
 
+        Dog dog2 = new Dog();
+        dog2.setId(99999L);
+
+        dogHandler.addDog(dog1);
+        dogHandler.addDog(dog2);
+
+        assertEquals(dog1.getId(), dogHandler.updateDogDetails(dog1), "The IDs of the dogs do not match.");
     }
 
 }
