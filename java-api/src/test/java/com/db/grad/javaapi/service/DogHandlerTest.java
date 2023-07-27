@@ -55,4 +55,25 @@ public class DogHandlerTest {
         assertEquals(NOFDOGS,actualResult);
     }
 
+    @Test
+    public void remove_dog_and_return_true_if_removed(){
+
+        //arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+
+        //act
+        Dog theDog = new Dog();
+        theDog.setName("Bruno");
+        cut.addDog(theDog);
+
+        boolean actualResult = cut.removeDog(cut.getDogByName(theDog).get(0).getId());
+
+        boolean expectedResult = true;
+
+        //assert
+
+        assertEquals(expectedResult,actualResult);
+
+    }
+
 }
