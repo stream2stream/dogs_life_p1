@@ -18,6 +18,11 @@ public class DogHandler {
         return itsDogRepo.count();
     }
 
+    public long updateDogDetails( Dog dog ) {
+        itsDogRepo.save(dog);
+        return dog.getId();
+    }
+
     public boolean removeDog(long dogId) {
         Dog dog = itsDogRepo.findById(dogId);
         return itsDogRepo.delete(dog);
