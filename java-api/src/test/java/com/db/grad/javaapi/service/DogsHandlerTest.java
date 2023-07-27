@@ -31,6 +31,20 @@ public class DogsHandlerTest {
 
     }
 
+    @Test
+    public void testGetDogById() {
+        DogHandler handler = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        handler.addDog(dog1);
+
+        Dog dog2 = new Dog();
+        handler.addDog(dog2);
+
+        Dog ret = handler.getDogById(1);
+        assertEquals(dog1.getId(), 1);
+        assertEquals(dog2.getId(), 2);
+    }
+
 }
 
 
