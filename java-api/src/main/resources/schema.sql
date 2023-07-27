@@ -1,8 +1,12 @@
-DROP TABLE IF EXISTS dogs;
-
-CREATE TABLE dogs (
-    dog_id INT NOT NULL,
-    name VARCHAR(250) NOT NULL,
-    age INT NOT NULL
+create table owners(
+ owner_id int  AUTO_INCREMENT PRIMARY KEY,
+ name int not null
 );
 
+create table dogs(
+ id int not null,
+ name varchar(50) not null,
+ age int not null,
+ owner_id int,
+ FOREIGN KEY(owner_id) REFERENCES owners(owner_id)
+);

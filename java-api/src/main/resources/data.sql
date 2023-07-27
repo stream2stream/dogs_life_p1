@@ -1,3 +1,1 @@
-INSERT INTO dogs (dog_id, name, age) VALUES (1, 'Einstein', 3);
-INSERT INTO dogs (dog_id, name, age) VALUES (2, 'Kaya', 5);
-INSERT INTO dogs (dog_id, name, age) VALUES (3, 'Lassie', 7);
+insert into dogs(id, name, age) values (1,'puppy', 2), (2,'Bob',3), (20,'Rex',5)
