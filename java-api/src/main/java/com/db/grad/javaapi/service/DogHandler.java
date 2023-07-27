@@ -38,5 +38,13 @@ public class DogHandler {
 
 
         }
+    public boolean removeDog(long id){
+        if(this.itsDogRepo.existsById(id)){
+            Dog DogToBeRemoved = this.itsDogRepo.findById(id);
+            this.itsDogRepo.delete(DogToBeRemoved);
+            return true;}
+        return false;}
+
+    
 
 }

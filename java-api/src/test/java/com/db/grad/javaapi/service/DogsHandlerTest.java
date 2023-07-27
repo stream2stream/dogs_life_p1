@@ -47,6 +47,20 @@ public class DogsHandlerTest {
 
 
     }
+    @Test
+    @DisplayName("Check removing dog by id")
+    public void testRemoveDog(){
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog theDog = new Dog();
+        String name = "Bruno";
+        theDog.setName(name);
+        theDog.setId(1);
+        cut.addDog( theDog );
 
+        Boolean result=cut.removeDog(1);
+        assertEquals(result,true);
+
+
+    }
 
 }
