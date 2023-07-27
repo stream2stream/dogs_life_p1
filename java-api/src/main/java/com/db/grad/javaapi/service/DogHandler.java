@@ -19,4 +19,8 @@ public class DogHandler {
     public long getNoOfDogs(){
         return dogsRepository.count();
     }
+
+    public Dog getDogByName(String name) { return dogsRepository.getDogByName(name); }
+
+
 }
