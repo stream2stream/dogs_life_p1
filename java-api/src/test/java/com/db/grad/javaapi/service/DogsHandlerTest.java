@@ -7,8 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DogsHandlerTest {
 
@@ -211,6 +210,49 @@ public class DogsHandlerTest {
         assertEquals(9826878, actualResult);
     }
 
+    @Test
+    @DisplayName("Remove a dog")
+    void remove_dog() {
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+        Dog dog3 = new Dog();
+        dog3.setName("Bruno");
+        cut.addDog(dog3);
+
+        // act
+        boolean actualResult = cut.removeDog(2);
+
+        // assert
+        assertTrue(actualResult);
+    }
+
+    @Test
+    @DisplayName("Dog cannot be removed")
+    void remove_dog_not_possible() {
+        // arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog dog1 = new Dog();
+        dog1.setName("Bruno");
+        cut.addDog(dog1);
+        Dog dog2 = new Dog();
+        dog2.setName("Rex");
+        cut.addDog(dog2);
+        Dog dog3 = new Dog();
+        dog3.setName("Bruno");
+        cut.addDog(dog3);
+
+        // act
+        boolean actualResult = cut.removeDog(1878);
+
+        // assert
+        assertFalse(actualResult);
+    }
 
 
 

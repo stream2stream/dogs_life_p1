@@ -46,4 +46,15 @@ public class DogHandler {
     public long updateDogDetails(Dog dog) {
         return dog.getId();
     }
+
+    public boolean removeDog(int i) {
+        Dog toRemove = itsDogsRepo.findById(i);
+
+        if(toRemove != null) {
+            itsDogsRepo.delete(toRemove);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
