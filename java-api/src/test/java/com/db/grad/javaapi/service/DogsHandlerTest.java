@@ -44,9 +44,17 @@ public class DogsHandlerTest {
 
         Dog dog=cut.getDogByName("Bruno");
         assertEquals(theDog,dog);
-
-
     }
 
+    @Test
+    @DisplayName("GetDogById")
+    public void getDogById(){
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog theDog = new Dog();
+        theDog.setId(1);
+        cut.addDog( theDog );
 
+        Dog dog = cut.getDogById(1);
+        assertEquals(theDog, dog);
+    }
 }
