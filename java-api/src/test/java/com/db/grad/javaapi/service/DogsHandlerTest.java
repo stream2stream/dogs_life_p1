@@ -45,16 +45,14 @@ public class DogsHandlerTest {
         DogHandler cut = new DogHandler(itsDogRepo);
         Dog theDog = new Dog();
         theDog.setName("Bruno");
-        theDog.setId(3);
         cut.addDog(theDog);
         // Dog 2 to fail the test
         Dog theDog2 = new Dog();
         theDog2.setName("Dog2");
-        theDog2.setId(2L);
         cut.addDog(theDog2);
 
         Dog expectedResult = theDog;
-        Dog actualResult = cut.findById(3);
+        Dog actualResult = cut.findById(1L);
         assertEquals(expectedResult, actualResult, "Sorry, could not find the dog");
     }
     @Test
@@ -88,15 +86,18 @@ public class DogsHandlerTest {
         dog2.setName("John");
         dogHandler.addDog(dog2);
 
+        Dog dog3 = new Dog();
+        dog3.setName("John");
+        dogHandler.addDog(dog3);
+
         //Case 1: Dog with the given name exists
         Dog resultDog1 = dogHandler.getDogByName(dog1.getName());
         assertNotNull(resultDog1, "Dog should not be null");
         assertEquals(dog1.getName(), resultDog1.getName(), "Dog exists");
 
-        //Case 2: Several Dogs exists with the same name
+        //Case 2: Several Dogs exists with the same name - should return null
         Dog resultDog2 = dogHandler.getDogByName(dog2.getName());
         assertNull(resultDog2, "Dog should be null as there are several Dogs existing with the same name");
-        assertNotNull(resultDog2, "There are not several dogs with the same name");
     }
 
     @Test
