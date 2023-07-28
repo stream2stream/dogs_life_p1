@@ -56,4 +56,9 @@ public class DogService {
         itsDogRepo.delete(dog);
     }
 
+    public List<Dog> alldogs (){
+        return itsDogRepo.findAll();
+    }
+
+
 }
