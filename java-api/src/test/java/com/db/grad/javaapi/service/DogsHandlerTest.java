@@ -60,4 +60,19 @@ public class DogsHandlerTest {
         assertEquals(2, actualResult);
 
     }
+
+    @Test
+    public void get_dog_by_name() {
+        DogHandler cut = new DogHandler(itsDogRepo);
+
+        Dog theDog = new Dog();
+        theDog.setName("Coco");
+        theDog.setId(2);
+        cut.addDog(theDog);
+
+        String actualresult = cut.getDogByName("coco");
+        String expectedresult = "Coco";
+        assertEquals("Coco", actualresult);
+
+    }
 }
