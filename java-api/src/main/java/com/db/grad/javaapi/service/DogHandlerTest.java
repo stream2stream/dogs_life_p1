@@ -32,4 +32,24 @@ public class DogHandlerTest {
         //assert
         assertEquals( expectedResult, actualResult );
     }
+
+    @Test
+    public void add_several_dogs_return_number_of_dogs_match_number_added() {
+        //arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+        Dog theDog1 = new Dog();
+        theDog1.setName("Stephan");
+        cut.addDog(theDog1);
+
+        Dog theDog2 = new Dog();
+        theDog2.setName("Pontius");
+        cut.addDog(theDog2);
+        int expectedResult = 2;
+
+        //act
+        long actualResult = cut.getNoOfDogs();
+
+        //assert
+        assertEquals( expectedResult, actualResult );
+    }
 }
