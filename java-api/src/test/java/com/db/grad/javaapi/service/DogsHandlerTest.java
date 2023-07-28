@@ -41,4 +41,23 @@ public class DogsHandlerTest {
         boolean expectedResult = true ;
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void updateDogDetails() {
+
+        DogHandler cut = new DogHandler(itsDogRepo);
+
+        Dog theDog = new Dog();
+        theDog.setName("Coco");
+        theDog.setId(2);
+        cut.addDog( theDog );
+
+        Dog newDog = new Dog();
+        newDog.setId(2);
+        newDog.setName("buddy");
+
+        long actualResult = cut.updateDogDetails(newDog);
+        assertEquals(2, actualResult);
+
+    }
 }

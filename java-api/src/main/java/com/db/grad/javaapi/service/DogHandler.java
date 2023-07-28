@@ -20,4 +20,8 @@ public class DogHandler {
     public boolean existsById(long id) {
         return itsDogsRepo.existsById(id);
     }
+
+    public long updateDogDetails(Dog dog) {
+        return itsDogsRepo.save(dog);
+    }
 }
