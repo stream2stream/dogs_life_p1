@@ -1,9 +1,11 @@
 package com.db.grad.javaapi.repository;
 
 import com.db.grad.javaapi.model.Dog;
+import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DogsRepositoryStub implements DogsRepository {
     private ArrayList<Dog> itsDogs = new ArrayList<>();
@@ -17,7 +19,7 @@ public class DogsRepositoryStub implements DogsRepository {
     }
 
     @Override
-    public Dog findById(long id) {
+    public Optional<Dog> findById(long id) {
         Dog result = null;
 
         for( Dog theDog: itsDogs)
@@ -26,7 +28,7 @@ public class DogsRepositoryStub implements DogsRepository {
                 break;
             }
 
-        return result;
+        return result == null ? Optional.empty() : Optional.of(result);
     }
 
     @Override
@@ -41,8 +43,9 @@ public class DogsRepositoryStub implements DogsRepository {
         return result;
     }
 
+    @Nullable
     @Override
-    public long save(Dog aDog) {
+    public Dog save(Dog aDog) {
         Dog retrievedDog = null;
         long result = -1;
 
@@ -56,7 +59,12 @@ public class DogsRepositoryStub implements DogsRepository {
         if( retrievedDog == null )
             result = addDog(aDog);
 
-        return result;
+        if (result < 0) {
+            return null;
+        } else {
+            return retrievedDog;
+        }
+
     }
 
     @Override
@@ -99,7 +107,6 @@ public class DogsRepositoryStub implements DogsRepository {
     @Override
     public Dog getDogByName(String name) {
         Dog result = null;
-
         for (Dog theDog : itsDogs) {
             if (theDog.getName().equalsIgnoreCase(name)) {
                 if (result != null) {
@@ -110,8 +117,6 @@ public class DogsRepositoryStub implements DogsRepository {
                 result = theDog;
             }
         }
-
-
         return result;
 
     }

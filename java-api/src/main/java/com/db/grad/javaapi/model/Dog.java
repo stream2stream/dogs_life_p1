@@ -1,8 +1,14 @@
 package com.db.grad.javaapi.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Dog
 {
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
+
+    @Column
     private String name;
 
     public long getId() {

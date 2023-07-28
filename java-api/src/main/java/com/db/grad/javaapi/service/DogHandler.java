@@ -2,17 +2,26 @@ package com.db.grad.javaapi.service;
 
 import com.db.grad.javaapi.model.Dog;
 import com.db.grad.javaapi.repository.DogsRepository;
+import com.db.grad.javaapi.repository.DogsRepositoryJPA;
 import com.db.grad.javaapi.repository.DogsRepositoryStub;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
+@Service
 public class DogHandler {
 
     private final DogsRepository dogsRepository;
 
+    @Autowired
     public DogHandler(DogsRepository dogsRepository) {
         this.dogsRepository = dogsRepository;
     }
 
-    public long addDog(Dog theDog) {
+    public Dog addDog(Dog theDog) {
         return dogsRepository.save(theDog);
     }
 
@@ -20,20 +29,39 @@ public class DogHandler {
         return dogsRepository.count();
     }
 
-    public Dog getDogById(long id) {
-        return dogsRepository.findById(id);
+    public Optional<Dog> getDogById(long id) {
+        Optional<Dog> result =  dogsRepository.findById(id);
+        if (result.isPresent()) {
+            return result;
+        } else {
+            throw new NoSuchElementException();
+        }
+
     }
 
     public Dog getDogByName(String name) {
-        return dogsRepository.getDogByName(name);
+        Dog dogToFind = new Dog();
+        dogToFind.setName(name);
+        List<Dog> list = dogsRepository.findByName(dogToFind);
+        return list.size() > 0 ? dogToFind : null;
     }
 
-    public long updateDogDetails(Dog dog) {
+    public Dog updateDogDetails(Dog dog) {
         if (dogsRepository.existsById(dog.getId())) {
             return dogsRepository.save(dog);
         } else {
-            return -1;
+            return null;
         }
+    }
+
+
+    public boolean removeDog(long id) {
+         Optional<Dog> dog = dogsRepository.findById(id);
+         if (dog.isPresent()) {
+             return dogsRepository.delete(dog.get());
+         } else {
+             return false;
+         }
     }
 }
 
