@@ -8,17 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class DogHandler {
+public class DogService {
 
     private DogsRepository itsDogRepo;
 
     @Autowired
-    public DogHandler(DogsRepository repo) {
+    public DogService(DogsRepository repo) {
         itsDogRepo = repo;
     }
 
-    public long addDog(Dog theDog) {
-        return itsDogRepo.save(theDog);
+    public Dog addDog(Dog theDog) {
+        itsDogRepo.save(theDog);
+        return theDog;
     }
 
     public long getNoOfDogs() {
@@ -50,10 +51,9 @@ public class DogHandler {
         return dog.getId();
     }
 
-    public boolean removeDog(long dogId) {
+    public void removeDog(long dogId) {
         Dog dog = itsDogRepo.findById(dogId);
-        return itsDogRepo.delete(dog);
-
+        itsDogRepo.delete(dog);
     }
 
 }
