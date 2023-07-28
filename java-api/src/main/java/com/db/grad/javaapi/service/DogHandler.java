@@ -5,11 +5,11 @@ import com.db.grad.javaapi.repository.DogsRepository;
 
 import java.util.List;
 
-public class DogsHandler
+public class DogHandler
 {
     private DogsRepository itsDogsRepo;
 
-    public DogsHandler(DogsRepository repo)
+    public DogHandler(DogsRepository repo)
     {
         itsDogsRepo = repo;
     }
