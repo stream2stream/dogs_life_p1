@@ -43,7 +43,7 @@ public class DogsController {
     return dogService.getDogByName(name);
   }
 
-  @GetMapping ("/")
+  @GetMapping ("/alldogs")
   public List<Dog> alldogs(){
     return dogService.alldogs();
   }

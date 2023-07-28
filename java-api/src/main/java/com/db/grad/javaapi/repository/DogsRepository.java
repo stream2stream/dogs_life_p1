@@ -8,8 +8,15 @@ import java.util.List;
 
 @Repository
 public interface DogsRepository extends JpaRepository<Dog, Long> {
+    boolean existsById( long id );
+  Dog  findById( long id );
+    List<Dog> findByName(Dog theDog );
+
+
+
     // clash long save(Dog theDog );
-    Dog  findById( long id );
+    /*
+
     List<Dog> findByName(Dog theDog );
 
     // clash  boolean delete( Dog theDog );
@@ -17,5 +24,5 @@ public interface DogsRepository extends JpaRepository<Dog, Long> {
     boolean existsById( long id );
 
     // Additional admin functionality
-    void    deleteAll();
+    void    deleteAll();*/
 }
