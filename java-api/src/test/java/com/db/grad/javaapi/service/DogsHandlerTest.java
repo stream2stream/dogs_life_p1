@@ -3,6 +3,7 @@ package com.db.grad.javaapi.service;
 import com.db.grad.javaapi.model.Dog;
 import com.db.grad.javaapi.repository.DogsRepository;
 //import org.junit.Ignore;
+import com.db.grad.javaapi.repository.DogsRepositoryJPA;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,7 +23,7 @@ import static org.mockito.Mockito.verify;
 public class DogsHandlerTest
 {
     @Mock
-    private DogsRepository itsDogsRepo;
+    private DogsRepositoryJPA itsDogsRepo;
 
     @InjectMocks
     private DogHandler cut;

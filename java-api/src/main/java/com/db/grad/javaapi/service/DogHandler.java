@@ -14,10 +14,10 @@ import java.util.Optional;
 @Service
 public class DogHandler {
 
-    private final DogsRepository dogsRepository;
+    private final DogsRepositoryJPA dogsRepository;
 
     @Autowired
-    public DogHandler(DogsRepository dogsRepository) {
+    public DogHandler(DogsRepositoryJPA dogsRepository) {
         this.dogsRepository = dogsRepository;
     }
 
@@ -42,7 +42,7 @@ public class DogHandler {
     public Dog getDogByName(String name) {
         Dog dogToFind = new Dog();
         dogToFind.setName(name);
-        List<Dog> list = dogsRepository.findByName(dogToFind);
+        List<Dog> list = dogsRepository.findAllByName(dogToFind);
         return list.size() > 0 ? dogToFind : null;
     }
 
@@ -58,10 +58,14 @@ public class DogHandler {
     public boolean removeDog(long id) {
          Optional<Dog> dog = dogsRepository.findById(id);
          if (dog.isPresent()) {
-             return dogsRepository.delete(dog.get());
+             dogsRepository.delete(dog.get());
+             return true;
          } else {
              return false;
          }
+    }
+
+    public String getAllDogs() {
     }
 }
 
