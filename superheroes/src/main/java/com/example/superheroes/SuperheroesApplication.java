@@ -19,7 +19,6 @@ public class SuperheroesApplication { /*implements CommandLineRunner {*/
 //	Calculator calc;
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(SuperheroesApplication.class, args);
 	}
 
