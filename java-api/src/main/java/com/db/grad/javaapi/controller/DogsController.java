@@ -28,9 +28,11 @@ public class DogsController {
   public long getNoOfDogs(){
     return dogService.getNoOfDogs();
   }
-  @GetMapping("/dogs/{id}")
-  public Dog findById(@PathVariable long id){
-    return dogService.findById(id);
+  @GetMapping("/dogs/id/{id}")
+  public Dog findDogById(@PathVariable long id){
+    System.out.println(id);
+    System.out.println("Find by id");
+    return dogService.findDogsById(id);
   }
 
   @DeleteMapping("/remdog/{id}")

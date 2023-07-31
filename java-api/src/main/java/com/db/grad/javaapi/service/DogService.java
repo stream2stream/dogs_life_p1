@@ -43,7 +43,7 @@ public class DogService {
         }
     }
 
-    public Dog findById(long i) {
+    public Dog findDogsById(long i) {
         return itsDogRepo.findById(i);
     }
     public long updateDogDetails( Dog dog ) {
