@@ -9,6 +9,10 @@ build/
 dist/
 .pytest_cache/
 .vscode/
+# React
+node_modules
+dog-app-ui/node_modules
+ReactPractice/node_modules
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
