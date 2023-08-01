@@ -52,3 +52,13 @@
   max-width: 250px;
 }
 
+.heroForm {
+    display: flex;
+    width: 100%;
+    max-width: 40%;
+    margin: 0 auto;
+    padding-top: 20px;
+    justify-content: center;
+              }
+
+
