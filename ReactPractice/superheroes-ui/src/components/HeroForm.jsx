@@ -2,6 +2,8 @@ import Button from 'react-bootstrap/Button'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/esm/Row'
+import { saveHero } from '../services/hero-service'
+
 
 
 
@@ -32,10 +34,19 @@ const HeroForm = () => {
         event.preventDefault();
         let hero = {};
         hero.alias = alias;
-        hero.name = name;
-        hero.ability = ability;
+        // hero.name = name;
+        hero.superpower = ability;
         hero.teamID = teamID;
-        console.log(hero);
+        saveHero(hero)
+            .then(res => {
+                setAbility('');
+                setAlias('');
+                setName('');
+                setTeamID(0)
+            })
+            .catch(err=>{
+                console.log(err);
+            })
     }
     
   return (
