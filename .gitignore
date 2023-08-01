@@ -68,3 +68,5 @@ env.bak/
 venv.bak/
 {"mode":"full","isActive":false}
 .DS_Store
+
+*node_modules/*
